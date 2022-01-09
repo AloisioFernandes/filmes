@@ -1,11 +1,17 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Feather } from '@expo/vector-icons'
+
+import { Container, MenuButton, Title } from './styled'
 
 function Header() {
   return (
-    <View>
-      <Text>HEADER TESTE</Text>
-    </View>
+    <Container>
+      <MenuButton>
+        <Feather name="menu" size={36} color="#FFF" />
+      </MenuButton>
+
+      <Title>React Prime</Title>
+    </Container>
   )
 }
 
