@@ -1,16 +1,19 @@
 import React from 'react'
 import { Feather } from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native'
 
 import { Container, MenuButton, Title } from './styled'
 
-function Header() {
+function Header({ title }) {
+  const navigation = useNavigation()
+
   return (
     <Container>
-      <MenuButton>
+      <MenuButton onPress={() => navigation.openDrawer()}>
         <Feather name="menu" size={36} color="#FFF" />
       </MenuButton>
 
-      <Title>React Prime</Title>
+      <Title>{title}</Title>
     </Container>
   )
 }
