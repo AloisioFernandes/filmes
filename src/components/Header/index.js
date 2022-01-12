@@ -2,7 +2,7 @@ import React from 'react'
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-import { Container, MenuButton, Title } from './styled'
+import { Container, MenuButton, Title } from './styles'
 
 function Header({ title }) {
   const navigation = useNavigation()
