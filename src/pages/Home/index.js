@@ -2,7 +2,14 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 
-import { Container, SearchContainer, Input, Title, BannerButton, Banner } from './styles'
+import { 
+  Container, 
+  SearchContainer, 
+  Input, 
+  Title, 
+  BannerButton, 
+  Banner 
+} from './styles'
 import Header from '../../components/Header'
 
 function Home() {
@@ -32,3 +39,4 @@ function Home() {
 }
 
 export default Home
+// 10:30
