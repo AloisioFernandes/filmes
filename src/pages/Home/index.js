@@ -13,6 +13,7 @@ import {
   SliderMovie
 } from './styles'
 import Header from '../../components/Header'
+import SliderItem from '../../components/SliderItem'
 
 function Home() {
   return (
@@ -40,7 +41,7 @@ function Home() {
         <SliderMovie 
           horizontal={true}
           data={[1, 2, 3, 4]}
-          renderItem={({ item }) => {}}
+          renderItem={({ item }) => <SliderItem />}
         />
       </ScrollView>
     </Container>
