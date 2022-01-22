@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ScrollView } from 'react-native'
 import { Feather } from '@expo/vector-icons'
 
@@ -15,7 +15,43 @@ import {
 import Header from '../../components/Header'
 import SliderItem from '../../components/SliderItem'
 
+import api, { key } from '../../services/api'
+
 function Home() {
+  const [nowMovies, setNowMovies] = useState([])
+
+  useEffect(() => {
+    let isActive = true
+
+    async function getMovies() {
+      const [nowData, popularData, topData] = await Promise.all([
+        api.get('/movie/now_playing', {
+          params: {
+            api_key: key,
+            language: 'pt-BR',
+            page: 1
+          }
+        }),
+        api.get('/movie/popular', {
+          params: {
+            api_key: key,
+            language: 'pt-BR',
+            page: 1
+          }
+        }),
+        api.get('/movie/top_rated', {
+          params: {
+            api_key: key,
+            language: 'pt-BR',
+            page: 1
+          }
+        }),
+      ])
+    }
+
+    getMovies()
+  }, [])
+
   return (
     <Container>
       <Header title="React Prime"/>
