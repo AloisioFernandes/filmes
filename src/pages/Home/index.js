@@ -15,10 +15,14 @@ import {
 import Header from '../../components/Header'
 import SliderItem from '../../components/SliderItem'
 
+import { getListMovies } from '../../utils/movie'
+
 import api, { key } from '../../services/api'
 
 function Home() {
   const [nowMovies, setNowMovies] = useState([])
+  const [popularMovies, setPopularMovies] = useState([])
+  const [topMovies, setTopMovies] = useState([])
 
   useEffect(() => {
     let isActive = true
@@ -47,6 +51,14 @@ function Home() {
           }
         }),
       ])
+
+      const nowList = getListMovies(10, nowData.data.results)
+      const popularList = getListMovies(5, popularData.data.results)
+      const topList = getListMovies(5, topData.data.results)
+
+      setNowMovies(nowList)
+      setPopularMovies(popularList)
+      setTopMovies(topList)
     }
 
     getMovies()
@@ -77,8 +89,9 @@ function Home() {
         <SliderMovie 
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          data={[1, 2, 3, 4]}
-          renderItem={({ item }) => <SliderItem />}
+          data={nowMovies}
+          renderItem={({ item }) => <SliderItem data={item} />}
+          keyExtractor={(item) => String(item.id)}
         />
 
         <Title>Populares</Title>
@@ -86,8 +99,9 @@ function Home() {
         <SliderMovie 
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          data={[1, 2, 3, 4]}
-          renderItem={({ item }) => <SliderItem />}
+          data={popularMovies}
+          renderItem={({ item }) => <SliderItem data={item} />}
+          keyExtractor={(item) => String(item.id)}
         />
 
         <Title>Mais votados</Title>
@@ -95,8 +109,9 @@ function Home() {
         <SliderMovie 
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          data={[1, 2, 3, 4]}
-          renderItem={({ item }) => <SliderItem />}
+          data={topMovies}
+          renderItem={({ item }) => <SliderItem data={item} />}
+          keyExtractor={(item) => String(item.id)}
         />
       </ScrollView>
     </Container>
