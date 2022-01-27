@@ -15,7 +15,7 @@ import {
 import Header from '../../components/Header'
 import SliderItem from '../../components/SliderItem'
 
-import { getListMovies } from '../../utils/movie'
+import { getListMovies, randomBanner } from '../../utils/movie'
 
 import api, { key } from '../../services/api'
 
@@ -23,7 +23,7 @@ function Home() {
   const [nowMovies, setNowMovies] = useState([])
   const [popularMovies, setPopularMovies] = useState([])
   const [topMovies, setTopMovies] = useState([])
-
+  const [bannerMovie, setBannerMovie] = useState({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -59,7 +59,8 @@ function Home() {
         const nowList = getListMovies(10, nowData.data.results)
         const popularList = getListMovies(5, popularData.data.results)
         const topList = getListMovies(5, topData.data.results)
-  
+
+        setBannerMovie(nowData.data.results[randomBanner(nowData.data.results)])  
         setNowMovies(nowList)
         setPopularMovies(popularList)
         setTopMovies(topList)
