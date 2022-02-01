@@ -47,7 +47,7 @@ function Detail() {
   return (
     <Container>
       <Header>
-        <HeaderButton>
+        <HeaderButton activeOpacity={0.7} onPress={() => navigation.goBack()}>
           <Feather 
             name="arrow-left"
             size={28}
@@ -63,6 +63,11 @@ function Detail() {
           />
         </HeaderButton>
       </Header>
+
+      <Banner 
+        resizeMethod="resize"
+        source={{ uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}` }}
+      />
     </Container>
   )
 } 
