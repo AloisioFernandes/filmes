@@ -6,10 +6,13 @@ import {
   HeaderButton,
   Banner,
   ButtonLink,
-  Title
+  Title,
+  ContentArea,
+  Rate
 } from './styles'
 
 import { Feather, Ionicons } from '@expo/vector-icons'
+import Stars from 'react-native-stars'
 import api, { key } from '../../services/api'
 
 function Detail() {
@@ -76,8 +79,22 @@ function Detail() {
       </ButtonLink>
 
       <Title numberOfLines={2}>{movie.title}</Title>
+
+      <ContentArea>
+        <Stars 
+          default={movie.vote_average}
+          count={10}
+          half={true}
+          starSize={20}
+          fullStar={ <Ionicons name="md-star" size={24} color="#E7A74E" /> }
+          emptyStar={ <Ionicons name="md-star-outline" size={24} color="#E7A74E" /> }
+          halfStar={ <Ionicons name="md-star-half" size={24} color="#E7A74E" /> }
+          disable={true}
+        />
+        <Rate>{movie.vote_average}/10</Rate>
+      </ContentArea>
     </Container>
   )
-} 
+}
 
 export default Detail
