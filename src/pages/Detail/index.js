@@ -102,7 +102,7 @@ function Detail() {
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => String(item.id)}
-        renderItem={() => <Genres />}
+        renderItem={({ item }) => <Genres data={item} />}
       />
     </Container>
   )
