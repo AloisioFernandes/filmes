@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { ScrollView } from 'react-native'
+import { Feather, Ionicons } from '@expo/vector-icons'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import Stars from 'react-native-stars'
 import { 
@@ -10,10 +12,10 @@ import {
   Title,
   ContentArea,
   Rate,
-  ListGenres
+  ListGenres,
+  Description
 } from './styles'
 
-import { Feather, Ionicons } from '@expo/vector-icons'
 import api, { key } from '../../services/api'
 
 import Genres from '../../components/Genres'
@@ -104,6 +106,11 @@ function Detail() {
         keyExtractor={(item) => String(item.id)}
         renderItem={({ item }) => <Genres data={item} />}
       />
+
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Title>Descrição</Title>
+        <Description>{movie.overview}</Description>
+      </ScrollView>
     </Container>
   )
 }
