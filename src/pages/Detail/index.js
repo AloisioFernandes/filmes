@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, Modal } from 'react-native'
 import { Feather, Ionicons } from '@expo/vector-icons'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import Stars from 'react-native-stars'
@@ -25,6 +25,7 @@ function Detail() {
   const route = useRoute()
 
   const [movie, setMovie] = useState({})
+  const [openLink, setOpenLink] = useState(false)
 
   useEffect(() => {
     let isActive = true
@@ -111,6 +112,10 @@ function Detail() {
         <Title>Descrição</Title>
         <Description>{movie.overview}</Description>
       </ScrollView>
+
+      <Modal animationType="slide" transparent={true} visible={openLink}>
+        
+      </Modal>
     </Container>
   )
 }
