@@ -19,6 +19,7 @@ import {
 import api, { key } from '../../services/api'
 
 import Genres from '../../components/Genres'
+import ModalLink from '../../components/ModalLink'
 
 function Detail() {
   const navigation = useNavigation()
@@ -81,7 +82,7 @@ function Detail() {
       />
 
       <ButtonLink>
-        <Feather name="link" size={24} color="#FFF" />
+        <Feather name="link" size={24} color="#FFF" onPress={() => setOpenLink(true)} />
       </ButtonLink>
 
       <Title numberOfLines={2}>{movie.title}</Title>
@@ -114,7 +115,7 @@ function Detail() {
       </ScrollView>
 
       <Modal animationType="slide" transparent={true} visible={openLink}>
-        
+        <ModalLink />
       </Modal>
     </Container>
   )
