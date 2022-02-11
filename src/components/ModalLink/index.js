@@ -1,22 +1,22 @@
 import React from 'react'
+import WebView from 'react-native-webview'
 import { Feather } from '@expo/vector-icons'
 
 import { BackButton, Name } from './styles'
 
-import WebView from 'react-native-webview'
 
-function ModalLink({ link }) {
+function ModalLink({ link, title, closeModal }) {
   return (
-    <View>
-      <BackButton>
+    <>
+      <BackButton onPress={closeModal}>
         <Feather name="x" size={35} color="#FFF" />
-        <Name>Título do filme</Name>
+        <Name>{title}</Name>
       </BackButton>
 
       <WebView 
         source={{ uri: link }}
       />
-    </View>
+    </>
   )
 }
 
