@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native' 
 
+import api, { key } from '../../services/api'
+
 import { Container, Name } from './styles'
 
 function Search() {
@@ -14,6 +16,14 @@ function Search() {
     let isActive = true
 
     async function getSearchMovie() {
+      const response = await api.get('/search/movie', {
+        params: {
+          query: route?.params?.name,
+          api_key: key,
+          language: 'pt-BR',
+          page: 1
+        }
+      })
 
     }
 
