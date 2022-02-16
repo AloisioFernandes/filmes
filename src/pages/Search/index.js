@@ -25,6 +25,11 @@ function Search() {
         }
       })
 
+      if(isActive) {
+        setMovie(response.data.results)
+        setLoading(false)
+      }
+
     }
 
     if(isActive) {
