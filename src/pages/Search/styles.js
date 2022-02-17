@@ -5,4 +5,4 @@ export const Container = styled.View`
   background-color: #191A30;
 `;
 
-export const Name = styled.FlatList``;
+export const ListMovies = styled.FlatList``;
