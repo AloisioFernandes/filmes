@@ -10,7 +10,7 @@ function SearchItem({ data, navigatePage }) {
       alert('Filme ainda sem data')
       return
     }
-    
+
     navigatePage(data)
   }
 
