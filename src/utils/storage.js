@@ -6,3 +6,19 @@ export async function getMoviesSave(key) {
   let moviesSave = JSON.parse(myMovies) || []
   return moviesSave
 }
+
+export async function saveMovie(key, newMovie) {
+  let moviesStored = await getMoviesSave(key)
+
+  const hasMovie = moviesStored.saveMovie(item => item.id === newMovie.id)
+
+  if(hasMovie) {
+    console.log('ESSE FILME JÁ EXISTE NA SUA LISTA')
+    return
+  }
+
+  moviesStored.push(newMovie)
+
+  await AsyncStorage.setItem(key, JSON.stringify(moviesStored))
+  console.log('FILME SALVO COM SUCESSO')
+}
