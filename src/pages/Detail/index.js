@@ -21,6 +21,8 @@ import api, { key } from '../../services/api'
 import Genres from '../../components/Genres'
 import ModalLink from '../../components/ModalLink'
 
+import { saveMovie } from '../../utils/storage'
+
 function Detail() {
   const navigation = useNavigation()
   const route = useRoute()
@@ -56,6 +58,12 @@ function Detail() {
     }
   }, [])
 
+  async function favoriteMovie(movie) {
+    await saveMovie('@primereact', movie)
+
+        
+  }
+
   return (
     <Container>
       <Header>
@@ -67,9 +75,9 @@ function Detail() {
           />
         </HeaderButton>
 
-        <HeaderButton>
+        <HeaderButton onPress={() => favoriteMovie(movie)}>
           <Ionicons 
-            name="bookmark"
+            name="bookmark-outline"
             size={28}
             color="#FFF"
           />
