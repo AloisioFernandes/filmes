@@ -22,3 +22,15 @@ export async function saveMovie(key, newMovie) {
   await AsyncStorage.setItem(key, JSON.stringify(moviesStored))
   console.log('FILME SALVO COM SUCESSO')
 }
+
+export async function deleteMovie() {
+  let moviesStored = getMoviesSave('@primereact')
+
+  let myMovies = moviesStored.filter(item => {
+    return (item.id !== id)
+  })
+
+  await AsyncStorage.setItem('@primereact', JSON.stringify(myMovies))
+  console.log("FILME DELETADO COM SUCESSO")
+  return myMovies
+}

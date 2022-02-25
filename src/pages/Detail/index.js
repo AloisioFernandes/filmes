@@ -60,8 +60,6 @@ function Detail() {
 
   async function favoriteMovie(movie) {
     await saveMovie('@primereact', movie)
-
-        
   }
 
   return (
