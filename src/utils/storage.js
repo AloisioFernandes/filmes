@@ -34,3 +34,16 @@ export async function deleteMovie() {
   console.log("FILME DELETADO COM SUCESSO")
   return myMovies
 }
+
+
+export async function hasMovie(movie) {
+  let moviesStored = getMoviesSave('@primereact')
+  
+  const hasMovie = moviesStored.find(item => item.id === movie.id)
+
+  if(hasMovie) {
+    return true
+  }
+
+  return false
+}
