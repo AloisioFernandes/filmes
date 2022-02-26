@@ -21,7 +21,7 @@ import api, { key } from '../../services/api'
 import Genres from '../../components/Genres'
 import ModalLink from '../../components/ModalLink'
 
-import { saveMovie } from '../../utils/storage'
+import { saveMovie, hasMovie } from '../../utils/storage'
 
 function Detail() {
   const navigation = useNavigation()
@@ -29,6 +29,7 @@ function Detail() {
 
   const [movie, setMovie] = useState({})
   const [openLink, setOpenLink] = useState(false)
+  const [favoritedMovie, setFavoritedMovie] = useState(false)
 
   useEffect(() => {
     let isActive = true
@@ -46,6 +47,8 @@ function Detail() {
 
       if(isActive) {
         setMovie(response.data)
+        const isFavorite = await hasMovie(response.data)
+        setFavoritedMovie(isFavorite)
       }
     }
 
@@ -74,11 +77,19 @@ function Detail() {
         </HeaderButton>
 
         <HeaderButton onPress={() => favoriteMovie(movie)}>
-          <Ionicons 
-            name="bookmark-outline"
-            size={28}
-            color="#FFF"
-          />
+          { favoritedMovie ? (
+            <Ionicons 
+              name="bookmark"
+              size={28}
+              color="#FFF"
+            />
+          ) : (
+            <Ionicons 
+              name="bookmark-outline"
+              size={28}
+              color="#FFF"
+            />
+          )}
         </HeaderButton>
       </Header>
 
