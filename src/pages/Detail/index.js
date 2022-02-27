@@ -21,7 +21,7 @@ import api, { key } from '../../services/api'
 import Genres from '../../components/Genres'
 import ModalLink from '../../components/ModalLink'
 
-import { saveMovie, hasMovie } from '../../utils/storage'
+import { saveMovie, hasMovie, deleteMovie } from '../../utils/storage'
 
 function Detail() {
   const navigation = useNavigation()
@@ -62,7 +62,15 @@ function Detail() {
   }, [])
 
   async function favoriteMovie(movie) {
-    await saveMovie('@primereact', movie)
+    if(favoritedMovie) {
+      await deleteMovie(movie.id)
+      setFavoritedMovie(false)
+      alert('Filme removido da sua lista')
+    } else {
+      await saveMovie('@primereact', movie)
+      setFavoritedMovie(true)
+      alert('Filme salvo na sua lista')
+    }
   }
 
   return (
