@@ -1,11 +1,15 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import Header from '../../components/Header'
+
+import {} from './styles'
 
 function Movies() {
   return (
-    <View>
-      <Text>Tela Meus Filmes</Text>
-    </View>
+    <Container>
+      <Header title="Meus filmes" />
+
+      <ListMovies data={[]} />
+    </Container>
   )
 }
 
