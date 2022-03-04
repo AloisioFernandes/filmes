@@ -4,6 +4,7 @@ import Header from '../../components/Header'
 import { Container, ListMovies } from './styles'
 
 import { getMoviesSave } from '../../utils/storage'
+import FavoriteItem from '../../components/FavoriteItem'
 
 function Movies() {
   const [movies, setMovies] = useState([])
@@ -37,7 +38,11 @@ function Movies() {
         showsVerticalScrollIndicator={false}
         data={movies} 
         keyExtractor={item => String(item.id)}
-        // renderItem={({ item }) => ()}
+        renderItem={({ item }) => (
+          <FavoriteItem 
+            data={item}
+          />
+        )}
       />
     </Container>
   )
