@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Ionicons, Feather } from '@expo/vector-icons'
 
+import { Container, Title, RateContainer, Rate, ActionContainer, DetailButton, DeleteButton } from './styles'
+
 function FavoriteItem() {
   return (
     <Container>
@@ -26,3 +28,4 @@ function FavoriteItem() {
 }
 
 export default FavoriteItem
+// 1:20:00
