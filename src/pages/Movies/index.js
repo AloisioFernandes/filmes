@@ -3,10 +3,15 @@ import Header from '../../components/Header'
 
 import { Container, ListMovies } from './styles'
 
-import { getMoviesSave } from '../../utils/storage'
+import { getMoviesSave, deleteMovie } from '../../utils/storage'
+
 import FavoriteItem from '../../components/FavoriteItem'
+import { useNavigation, useIsFocused } from '@react-navigation/native'
 
 function Movies() {
+  const navigation = useNavigation()
+  const isFocused = useIsFocused()
+
   const [movies, setMovies] = useState([])
 
   useEffect(() => {
@@ -28,7 +33,17 @@ function Movies() {
     return () => {
       isActive = false
     }
-  }, [])
+  }, [isFocused])
+
+  async function handleDelete(id) {
+    const result = await deleteMovie(id)
+    setMovies(result)
+  }
+
+  function navigateDetailsPage(item) {
+    navigation.navigate('Detail', { id: item.id })
+
+  }
 
   return (
     <Container>
@@ -41,6 +56,8 @@ function Movies() {
         renderItem={({ item }) => (
           <FavoriteItem 
             data={item}
+            deleteMovie={handleDelete}
+            navigatePage={() => navigateDetailsPage(item)}
           />
         )}
       />

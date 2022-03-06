@@ -4,22 +4,22 @@ import { Ionicons, Feather } from '@expo/vector-icons'
 
 import { Container, Title, RateContainer, Rate, ActionContainer, DetailButton, DeleteButton } from './styles'
 
-function FavoriteItem() {
+function FavoriteItem({ data, deleteMovie, navigatePage }) {
   return (
     <Container>
-      <Title size={22}>Titulo do filme</Title>
+      <Title size={22}>{data.title}</Title>
 
       <RateContainer>
         <Ionicons name="md-star" size={12} color="#E7A74E" />
-        <Rate>6.2/10</Rate>
+        <Rate>{data.vote_average}/10</Rate>
       </RateContainer>
 
       <ActionContainer>
-        <DetailButton>
+        <DetailButton onPress={() => navigatePage(data)}>
           <Title size={14}>Ver Detalhes</Title>
         </DetailButton>
 
-        <DeleteButton>
+        <DeleteButton onPress={() => deleteMovie(data.id)}>
           <Feather name="trash" size={24} color="#FFF" />
         </DeleteButton>
       </ActionContainer>
@@ -28,4 +28,3 @@ function FavoriteItem() {
 }
 
 export default FavoriteItem
-// 1:20:00
