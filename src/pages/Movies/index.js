@@ -23,7 +23,6 @@ function Movies() {
       if(isActive) {
         setMovies(result)
       }
-
     }
 
     if (isActive) {
